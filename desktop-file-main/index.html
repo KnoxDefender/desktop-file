@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knox's Webpage</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: url('https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?q=80&w=2842&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            padding-left: 50;
+            padding-right: 50;
+            padding-bottom: 0;
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            height: 700vh;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="absolute w-full h-full inset-0 bg-black/0"></div>
+
+    <div id="app" class="z-6 p-16 bg-white/10 backdrop-blur rounded-lg border-2 space-y-8">
+        <p class="text-2xl font-semibold">
+            2024 Daily Internship Reports
+
+           
+
+        </p>
+
+        <div class="flex space-x-1">
+            <button class="flex items-center justify-center rounded-full border bg-white w-6 h-6 text-sm" @click="decrement">👎</button>
+            <button class="flex items-center justify-center rounded-full border bg-white w-6 h-6 text-sm" @click="increment">👍</button>
+            <div><span class="px-2 py-1 bg-gray-0 rounded font-mono ml-3s">Likes{{ amount }}</span></div>
+        </div>
+
+        <div class="flex">
+            <a href="page2.html">
+                <div style="font-size: 25px;background-color: rgb(255, 255, 255); color: rgb(1, 1, 8); border-radius: 7px;" class="block px-3 py-2" @click="title = 'something else'">
+                  About Knox
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+      const app = Vue.createApp({
+  data() {
+      return {
+          amount: parseInt(localStorage.getItem('likesCount')) || 1,
+      }
+  },
+  methods: {
+      increment() {
+          this.amount++;
+          localStorage.setItem('likesCount', this.amount.toString());
+      },
+      decrement() {
+          if (this.amount > 1) {
+              this.amount--;
+              localStorage.setItem('likesCount', this.amount.toString());
+          }
+      }
+  }
+})
+app.mount('#app')
+    </script>
+</body>
+
+</html>
